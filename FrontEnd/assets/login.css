@@ -1,0 +1,54 @@
+#loginPage {
+	width: 50%;
+margin: auto;
+text-align: center;
+}
+#loginPage > * {
+	text-align: center;
+
+}
+#loginPage h2{
+	margin-bottom: 20px;
+}
+#loginPage form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#loginPage input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#loginPage label {
+	margin: 2em 0 1em 0;
+}
+#loginPage textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#loginPage span {
+	text-decoration: underline;
+}
+
+#loginPage input {
+	cursor: pointer;
+}
+
+body {
+	height: 100%;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+nav li a {
+	font-weight: bold;
+}
