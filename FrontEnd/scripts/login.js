@@ -14,11 +14,14 @@ login.addEventListener("submit", function(event) {
     .then((response) => response.json())
     .then((log) => {
         if (log.token) {
-            window.localStorage.setItem("userLogs", JSON.stringify(log));
-            document.location.href = "index.html";
+            sessionStorage.setItem("token", log.token);
+            document.location.href = "admin.html";
         }
         else {
             alert("Erreur dans l'identifiant ou le mot de passe !")
         }
+    })
+    .catch((error) => {
+        console.log(error)
     })
 });

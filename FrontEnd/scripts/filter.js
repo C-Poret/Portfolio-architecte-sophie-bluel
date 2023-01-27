@@ -1,43 +1,6 @@
-const serverUrl = "http://localhost:5678/api/"
-
-// Ajouter les projets
-function project(){
-    fetch(serverUrl + "works")
-    .then((response) => response.json())
-    .then((works) => {
-        for (work of works) {
-            newWork(work);
-        }
-    })
-    .catch((error) => {
-        console.log(error)
-    });
-};
-project();
-
-// Créer un projet
-function newWork(work) {
-    const gallery = document.getElementsByClassName("gallery");
-    let newFig = document.createElement("figure");
-
-    gallery[0].appendChild(newFig);
-    newFig.setAttribute("data-id", work.id);
-
-    const img = document.createElement("img");
-    img.crossOrigin = "anonymous";
-    img.src = work.imageUrl;
-    img.alt = work.title;
-
-    const figCap = document.createElement("figcaption");
-    figCap.textContent = work.title;
-
-    newFig.appendChild(img);
-    newFig.appendChild(figCap);
-}
-
 // Créer les filtres
 function createFilters() {
-    fetch(serverUrl + "categories")
+    fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
     .then((categories) => {
         const filters = document.createElement("div");
@@ -67,7 +30,7 @@ function createFilters() {
             background-color : white;
             cursor : pointer;
         `;
-        filtersButton.addEventListener("mouseenter", function() {
+        filtersButton.addEventListener("mouseenter", () => {
             filtersButton.style.cssText = `
                 font-family : 'Syne';
                 font-size : 16px;
@@ -80,8 +43,8 @@ function createFilters() {
                 background-color : #1D6154;
                 cursor : pointer;
             `;
-        })
-        filtersButton.addEventListener("mouseleave", function() {
+        });
+        filtersButton.addEventListener("mouseleave", () => {
             filtersButton.style.cssText = `
                 font-family : 'Syne';
                 font-size : 16px;
@@ -94,7 +57,7 @@ function createFilters() {
                 background-color : white;
                 cursor : pointer;
             `;
-        })
+        });
         filtersButton.classList.add("filter");
         filtersButton.textContent = "Tous";
         filters.appendChild(filtersButton);
@@ -113,7 +76,7 @@ function createFilters() {
                 background-color : white;
                 cursor : pointer;
             `;
-            filtersButtonCat.addEventListener("mouseenter", function() {
+            filtersButtonCat.addEventListener("mouseenter", () => {
                 filtersButtonCat.style.cssText = `
                     font-family : 'Syne';
                     font-size : 16px;
@@ -126,8 +89,8 @@ function createFilters() {
                     background-color : #1D6154;
                     cursor : pointer;
                 `;
-            })
-            filtersButtonCat.addEventListener("mouseleave", function() {
+            });
+            filtersButtonCat.addEventListener("mouseleave", () => {
                 filtersButtonCat.style.cssText = `
                     font-family : 'Syne';
                     font-size : 16px;
@@ -140,7 +103,7 @@ function createFilters() {
                     background-color : white;
                     cursor : pointer;
                 `;
-            })
+            });
             filtersButtonCat.classList.add("filter");
             filtersButtonCat.textContent = category.name;
             filters.appendChild(filtersButtonCat);
@@ -153,7 +116,7 @@ function createFilters() {
 createFilters();
 
 // Utiliser les filtres
-fetch(serverUrl + "works")
+fetch("http://localhost:5678/api/works")
 .then((response) => response.json())
 .then((works) => {
     const button = document.querySelectorAll("#filters .filter");
@@ -177,5 +140,3 @@ fetch(serverUrl + "works")
 .catch((error) => {
     console.log(error)
 });
-
-    
