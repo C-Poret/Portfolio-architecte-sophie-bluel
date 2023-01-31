@@ -6,6 +6,7 @@ const modalButtonX = document.querySelector(".modalButtonX");
 const modalButtonArrow = document.querySelector(".modalButtonArrow");
 const logout = document.querySelector(".logout");
 const modalButtonAdd = document.querySelector(".modalButtonAdd");
+const modalButtonPicture = document.querySelector(".modalButtonPicture");
 const modalPage = document.querySelector(".modalPage");
 const modalPageAdd = document.querySelector(".modalPageAdd");
 const valideButton = document.querySelector(".valideButton");
@@ -84,6 +85,7 @@ logout.addEventListener("click", (event) => {
 // Fermer la modal avec la croix
 modalButtonX.addEventListener("click", () => {
     modal.style.visibility = "hidden";
+    modalContainer.classList.add("hide");
     modalContainer.classList.remove("overlay");
     modalPage.classList.remove("hide");
     modalPageAdd.classList.add("hide");
@@ -98,6 +100,7 @@ modalButtonX.addEventListener("click", () => {
 window.onclick = (event) => {
     if (event.target == modalContainer) {
         modal.style.visibility = "hidden";
+        modalContainer.classList.add("hide");
         modalContainer.classList.remove("overlay");
         modalPage.classList.remove("hide");
         modalPageAdd.classList.add("hide");
@@ -113,6 +116,7 @@ window.onclick = (event) => {
 openModal.addEventListener("click", () => {
     modal.style.removeProperty("visibility");
     modalContainer.classList.add("overlay");
+    modalContainer.classList.remove("hide");
 });
 
 // Passer de la 1ere à la 2eme page de la modal
@@ -134,10 +138,18 @@ modalButtonArrow.addEventListener("click", () => {
 });
 
 // Supprimer un projet
-modalGallery.addEventListener("click", (event) => {
+document.addEventListener("click", (event) => {
     if(event.target.className === "deleteButton") {
         const indexProject = parseInt(event.target.parentElement.getAttribute("index"))
         const modalProject = event.target.parentElement;
+        deleteProject(modalProject, indexProject)
+    }
+});
+
+document.addEventListener("click", (event) => {
+    if(event.target.className === "fa-solid fa-trash-can") {
+        const indexProject = parseInt(event.target.parentElement.parentElement.getAttribute("index"))
+        const modalProject = event.target.parentElement.parentElement;
         deleteProject(modalProject, indexProject)
     }
 });
@@ -185,9 +197,9 @@ inputs.forEach((input) => {
 });
 
 // Selectionner le input pour insérer la photo au click sur me bouton "+ Ajouter photo"
-function modalPictureInput() {
+modalButtonPicture.addEventListener("click", function() {
     document.querySelector("#modalPicture").click();
-};
+});
 
 // Ajouter un projet
 function sendWork() {
@@ -217,6 +229,7 @@ function sendWork() {
         modalGallery.innerHTML = "";
         createProjects();
         modal.style.visibility = "hidden";
+        modalContainer.classList.add("hide");
         modalContainer.classList.remove("overlay");
         modalPage.classList.remove("hide");
         modalPageAdd.classList.add("hide");
@@ -232,7 +245,7 @@ function sendWork() {
     });
 };
 
-// On envoie les infos à l'api
+// On vérifie que les informations sont complètes
 document.addEventListener("click", (event) => {
     if (event.target.matches(".valideButton")) {
         if (!validForm) {

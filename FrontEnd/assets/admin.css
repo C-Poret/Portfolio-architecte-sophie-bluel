@@ -67,12 +67,15 @@ article #modifyButton {
     display: none;
 }
 
-.overlay {
+.modalContainer {
     position: fixed;
+    left: 0;
     top: 0;
-    width: 200%;
+    width: 100%;
     height: 100%;
-    transform: translateX(-50%);
+}
+
+.overlay {
     background: rgba(0, 0, 0, 0.3);
 }
 
@@ -84,8 +87,10 @@ article #modifyButton {
     position: absolute;
     width: 630px;
     height: auto;
-    left: 55%;
-    top: 15%;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
     border-radius: 10px;
     background-color: white;
     padding: 1% 1%;

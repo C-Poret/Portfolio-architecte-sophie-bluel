@@ -7,9 +7,10 @@ function createFilters() {
         filters.id = "filters";
         filters.style.cssText = `
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            width: 52%;
-            margin: 0 24% 50px 24%;
+            width: 54%;
+            margin-bottom: 50px;
         `;
         
         const gallery = document.getElementsByClassName("gallery");
@@ -29,6 +30,7 @@ function createFilters() {
             text-align : center;
             background-color : white;
             cursor : pointer;
+            margin : 5px;
         `;
         filtersButton.addEventListener("mouseenter", () => {
             filtersButton.style.cssText = `
@@ -42,6 +44,7 @@ function createFilters() {
                 text-align : center;
                 background-color : #1D6154;
                 cursor : pointer;
+                margin : 5px;
             `;
         });
         filtersButton.addEventListener("mouseleave", () => {
@@ -56,6 +59,7 @@ function createFilters() {
                 text-align : center;
                 background-color : white;
                 cursor : pointer;
+                margin : 5px;
             `;
         });
         filtersButton.classList.add("filter");
@@ -75,6 +79,7 @@ function createFilters() {
                 text-align : center;
                 background-color : white;
                 cursor : pointer;
+                margin : 5px;
             `;
             filtersButtonCat.addEventListener("mouseenter", () => {
                 filtersButtonCat.style.cssText = `
@@ -88,6 +93,7 @@ function createFilters() {
                     text-align : center;
                     background-color : #1D6154;
                     cursor : pointer;
+                    margin : 5px;
                 `;
             });
             filtersButtonCat.addEventListener("mouseleave", () => {
@@ -102,6 +108,7 @@ function createFilters() {
                     text-align : center;
                     background-color : white;
                     cursor : pointer;
+                    margin : 5px;
                 `;
             });
             filtersButtonCat.classList.add("filter");
